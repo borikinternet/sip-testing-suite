@@ -1,0 +1,12 @@
+Influx superuser:
+admin
+admin123
+BuyLHsQ4sqHFqdoexGoROCcpYB4Zv2leywDPKZ9uyC2n4ASbfznMMCeUtiiVbMfFVUmytwSbJUjO3TfB1NZ5Ug==
+
+Grafana:
+admin
+admin
+HeD63idLssGleNtv9nZrBtZ_0gshSzyounQiZ_Q3zB8oJcL23n_86lm-vdcnx0DVHp2EEf8TvO6HJw_1eyoqZQ==
+
+Telegraf:
+7CoG6o-nQG1TglLmy4-TWa84oufNICT4Lk9aiFkHMpAi5byKBEDcCEouIlePld1ra49M5Osh-pZdcITtGV4QMw==

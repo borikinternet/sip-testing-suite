@@ -1,0 +1,62 @@
+version: "3"
+
+services:
+  kamailio:
+    build:
+      context: kamailio
+    restart: on-failure
+    volumes:
+      - type: bind
+        source: ./kamailio/conf
+        target: /etc/kamailio
+
+  rtpengine:
+    build:
+      context: rtpengine
+    privileged: true
+    volumes:
+      - ./rtpengine/conf:/etc/rtpengine
+#    network_mode: host
+    restart: on-failure
+
+  sip-client-1:
+    build:
+      context: sipp
+    volumes:
+      - type: bind
+        source: ./sipp/scenarios
+        target: /scenarios
+    command:
+      - /scenarios/client.xml
+
+  sip-client-2:
+    build:
+      context: sipp
+    volumes:
+      - type: bind
+        source: ./sipp/scenarios
+        target: /scenarios
+    command:
+      - /scenarios/server.xml
+
+  influxdb:
+    image: influxdb
+    volumes:
+      - type: volume
+        source: influxdb
+        target: /var/lib/influxdb2
+    ports:
+      - "8086:8086"
+
+  telegraf:
+    image: telegraf
+    volumes:
+      - type: bind
+        source: ./telegraf/telegraf.conf
+        target: /etc/telegraf/telegraf.conf
+
+  redis:
+    image: redis
+
+volumes:
+  influxdb:
