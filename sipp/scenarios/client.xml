@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE scenario SYSTEM "sipp.dtd">
 
 <!-- This program is free software; you can redistribute it and/or      -->
@@ -34,18 +34,60 @@
       Contact: sip:sipp@[local_ip]:[local_port]
       Max-Forwards: 70
       Subject: Performance Test
-      Content-Type: application/sdp
+      Content-Type: multipart/mixed;boundary=sip-boundary-s0pzi0rxiN
       Content-Length: [len]
 
+      --sip-boundary-s0pzi0rxiN
+      Content-Type: application/sdp
+
       v=0
-      o=user1 53655765 2353687637 IN IP[local_ip_type] [local_ip]
-      s=-
-      c=IN IP[media_ip_type] [media_ip]
+      o=mkd 1707403848 1 IN IP4 10.114.1.8
+      s=protei
+      c=IN IP4 10.114.1.8
       t=0 0
-      m=audio [rtpstream_audio_port] RTP/AVP 8 101
-      a=rtpmap:8 PCMA/8000
-      a=rtpmap:101 telephone-event/8000
-      a=fmtp:101 0-11,16
+      m=audio 23124 RTP/AVP 8
+      a=inactive
+
+      --sip-boundary-s0pzi0rxiN
+      Content-Type: application/pidf+xml
+      Content-Disposition:
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <presence
+      xmlns="urn:ietf:params:xml:ns:pidf"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:dm="urn:ietf:params:xml:ns:pidf:data-model"
+      xmlns:gp="urn:ietf:params:xml:ns:pidf:geopriv10"
+      xmlns:gml="http://www.opengis.net/gml"
+      xmlns:gs="http://www.opengis.net/pidflo/1.0"
+      xmlns:cl="urn:ietf:params:xml:ns:pidf:geopriv10:civicLoc"
+      xmlns:fias="http://www.svetets.ru/fias"
+      xsi:schemaLocation="urn:ietf:params:xml:ns:pidf xsd/presence.xsd"
+      entity="79876031020">
+      <dm:device id="C6196E72-B103-453B-B2FF-X79876031020">
+      <gp:geopriv>
+      <gp:location-info>
+      <gml:location>
+      <gs:Circle srsName="urn:ogc:def:crs:EPSG::4326">
+      <gml:pos>55.9508 54.7276</gml:pos>
+      <gs:radius uom="urn:ogc:def:uom:EPSG::9001">109</gs:radius>
+      </gs:Circle>
+      </gml:location>
+      </gp:location-info>
+      </gp:geopriv>
+      <dm:deviceID>102079876031020</dm:deviceID>
+      <dm:timestamp>2024-02-08T14:56:42Z</dm:timestamp>
+      </dm:device>
+      </presence>
+
+      --sip-boundary-s0pzi0rxiN
+      Content-Type: text/plain;charset=UTF-8
+      Content-Disposition: form-data;name="part"
+
+      Какие-то строки на
+      русском or in English
+      --sip-boundary-s0pzi0rxiN--
+
 
     ]]>
   </send>
